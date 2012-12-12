@@ -31,6 +31,12 @@
         <property name="StockId">gtk-refresh</property>
         <signal name="Activated" handler="OnRefreshActionActivated" />
       </action>
+      <action id="newAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes" />
+        <property name="StockId">gtk-new</property>
+        <signal name="Activated" handler="OnNewActionActivated" />
+      </action>
     </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
@@ -45,9 +51,10 @@
             <property name="MemberName" />
             <property name="ShowArrow">False</property>
             <node name="toolbar1" type="Toolbar">
+              <node type="Toolitem" action="newAction" />
+              <node type="Toolitem" action="editAction" />
               <node type="Toolitem" action="clearAction" />
               <node type="Toolitem" action="refreshAction" />
-              <node type="Toolitem" action="editAction" />
             </node>
           </widget>
           <packing>

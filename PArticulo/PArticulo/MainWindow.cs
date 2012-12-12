@@ -73,7 +73,15 @@ public partial class MainWindow: Gtk.Window
 
 	protected void OnEditActionActivated (object sender, System.EventArgs e)
 	{
-		long id = getSelectedId();
+		showArticulo(getSelectedId());
+	}
+	
+	protected void OnNewActionActivated (object sender, System.EventArgs e)
+	{
+		showArticulo(0);
+	}
+	
+	private void showArticulo(long id) {
 		ArticuloView articuloView = new ArticuloView( id );
 		articuloView.Show ();
 	}
@@ -85,4 +93,6 @@ public partial class MainWindow: Gtk.Window
 		ListStore listStore = (ListStore)treeView.Model;
 		return long.Parse (listStore.GetValue (treeIter, 0).ToString ()); 
 	}
+
+
 }
