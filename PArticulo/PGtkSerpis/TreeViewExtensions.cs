@@ -25,6 +25,8 @@ namespace Serpis.Ad
 		
 		public static void ClearColumns(TreeView treeView)
 		{
+			treeView.Model = null;
+			
 			TreeViewColumn[] treeViewColumns = treeView.Columns;
 			foreach (TreeViewColumn treeViewColumn in treeViewColumns)
 				treeView.RemoveColumn (treeViewColumn);
