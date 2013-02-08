@@ -51,24 +51,7 @@ public partial class MainWindow: Gtk.Window
 	
 	protected void OnRefreshActionActivated (object sender, System.EventArgs e)
 	{
-		string connectionString = "Server=localhost;Database=dbprueba2;User Id=dbprueba; Password=sistemas;";
-		ApplicationContext.Instance.DbConnection = new NpgsqlConnection(connectionString);
-		ApplicationContext.Instance.DbConnection.Open ();
-		
-		IDbCommand dbCommand = ApplicationContext.Instance.DbConnection.CreateCommand ();
-		dbCommand.CommandText = 
-			"select a.id, a.nombre, a.precio, c.nombre as categoria " +
-			"from articulos a left join categoria c " +
-			"on a.categoria = c.id";
-		
-		IDataReader dataReader = dbCommand.ExecuteReader ();
-		
-		TreeViewExtensions.Fill (treeView, dataReader);
-		dataReader.Close ();
-		
-		dataReader = dbCommand.ExecuteReader ();
-		TreeViewExtensions.Fill (treeView, dataReader);
-		dataReader.Close ();
+		refresh ();
 	}
 
 	protected void OnEditActionActivated (object sender, System.EventArgs e)
